@@ -1,14 +1,6 @@
-﻿using Application.OrderAggregates;
-using Application.ProductAggregates;
+﻿using Application.ProductAggregates;
 using Application.RepositoryContracts;
 using Application.ServicesContracts;
-using Domain.OrderAggregates;
-using Domain.ProductAggregates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Services
 {

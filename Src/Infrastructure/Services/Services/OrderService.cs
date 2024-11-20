@@ -2,11 +2,6 @@
 using Application.RepositoryContracts;
 using Application.ServicesContracts;
 using Domain.OrderAggregates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Services
 {
@@ -38,7 +33,7 @@ namespace Services.Services
             // افزودن سود افزوده
             foreach (var item in order.OrderItems)
             {
-                var product = await _productService.GetProductAsync(item.ProductId);                
+                var product = await _productService.GetProductAsync(item.ProductId);
                 item.UnitPrice = _profitService.AddProfit(product.Price, 5000); // مثال: سود ثابت 5000 تومان                
             }
 
