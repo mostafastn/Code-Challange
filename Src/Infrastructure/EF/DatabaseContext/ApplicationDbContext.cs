@@ -3,16 +3,19 @@ using Domain.OrderAggregates;
 using Domain.ProductAggregates;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace EF.DatabaseContext
 {
     public class ApplicationDbContext : DbContext, IUnitOfWork
     {
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderItem> OrderItems { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
