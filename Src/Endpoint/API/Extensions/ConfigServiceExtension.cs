@@ -1,6 +1,6 @@
 ﻿using Application.RepositoryContracts;
 using Application.ServicesContracts;
-using EF.DatabaseContext;
+using efdb;
 using Microsoft.EntityFrameworkCore;
 using Repository.Orders;
 using Repository.Products;
@@ -30,10 +30,7 @@ namespace API.Extensions
         {
             services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
             {
-                options.UseSqlServer(@"Server=.;Database=MyAppDb;Trusted_Connection=True;", builder =>
-                {
-                    builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
-                });
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
         }
 

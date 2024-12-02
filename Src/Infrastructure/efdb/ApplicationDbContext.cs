@@ -4,10 +4,14 @@ using Domain.ProductAggregates;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace EF.DatabaseContext
+namespace efdb
 {
     public class ApplicationDbContext : DbContext, IUnitOfWork
     {
+        public ApplicationDbContext()
+        {
+                
+        }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
@@ -34,15 +38,15 @@ namespace EF.DatabaseContext
 
         private void FluentBuilder(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>()
-                .HasMany(o => o.OrderItems)
-                .WithOne()
-                .HasForeignKey(oi => oi.OrderId);
+            //modelBuilder.Entity<Order>()
+            //    .HasMany(o => o.OrderItems)
+            //    .WithOne()
+            //    .HasForeignKey(oi => oi.OrderId);
 
-            modelBuilder.Entity<OrderItem>()
-                .HasOne<Product>()
-                .WithMany()
-                .HasForeignKey(oi => oi.ProductId);
+            //modelBuilder.Entity<OrderItem>()
+            //    .HasOne<Product>()
+            //    .WithMany()
+            //    .HasForeignKey(oi => oi.ProductId);
 
             modelBuilder.Entity<Customer>()
                 .HasData(

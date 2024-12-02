@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Application\Application.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\EF\EF.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\efdb\efdb.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Repository\Repository\Repository.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Services\Services.csproj" />
   </ItemGroup>

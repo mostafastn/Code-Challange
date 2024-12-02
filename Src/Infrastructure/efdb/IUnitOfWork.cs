@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EF.DatabaseContext
+namespace efdb
 {
     public interface IUnitOfWork : IDisposable
     {
