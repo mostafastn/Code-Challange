@@ -1,5 +1,5 @@
 ﻿using Application.RepositoryContracts;
-using Domain.DbEntity;
+using Domain.EntityAggregates;
 using efdb;
 
 namespace Repository.Document

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Repository
@@ -20,41 +21,44 @@ namespace Repository
             _tEntities = _uow.Set<TEntity>();
         }
 
-        public virtual TEntity Add(TEntity entity)
+        public async Task<TEntity> Add(TEntity entity, bool bypassSave = false)
         {
-            return _tEntities.Add(entity).Entity;
+            await _tEntities.AddAsync(entity);
+            if (!bypassSave)
+                await _uow.SaveChangesAsync();
+            return entity;
         }
-        public void Delete(TEntity entity)
+
+        public async Task Delete(TEntity entity, bool bypassSave = false)
         {
             _tEntities.Remove(entity);
+            if (!bypassSave)
+               await _uow.SaveChangesAsync();
         }
-        public TEntity Find(Func<TEntity, bool> predicate)
+
+        public async Task<TEntity> Find(Func<TEntity, bool> predicate)
         {
-            return _tEntities.Where(predicate).FirstOrDefault();
+            return await _tEntities.Where(predicate: predicate).AsQueryable().FirstOrDefaultAsync();
         }
+
         public async Task<TEntity> FindAsync(int id)
         {
-
             return await _tEntities.FindAsync(id);
-        }
-        public IList<TEntity> GetAll()
-        {
-
-            return _tEntities.ToList();
-        }
-        public IQueryable<TEntity> GetAllAsyc()
-        {
-            return _tEntities.AsQueryable();
-        }
-        public IList<TEntity> GetAll(Func<TEntity, bool> predicate)
-        {
-            return _tEntities.Where(predicate).ToList();
-        }
+        }        
 
         public bool Any(Func<TEntity, bool> predicate)
         {
             return _tEntities.Any(predicate);
         }
 
+        public async Task<IList<TEntity>> GetAll()
+        {
+            return await _tEntities.ToListAsync();
+        }
+
+        public async Task<IList<TEntity>> GetAll(Func<TEntity, bool> predicate)
+        {
+            return await _tEntities.Where(predicate).AsQueryable().ToListAsync();
+        }
     }
 }

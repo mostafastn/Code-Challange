@@ -1,6 +1,6 @@
-﻿namespace Domain.EntityAggregates
+﻿namespace Application.EntityAggregates
 {
-    public class Entity
+    public class EntityViewModel
     {
         public int Id { get; set; }
         public required string TableName { get; set; }

@@ -1,6 +1,9 @@
-﻿namespace Application.ServicesContracts
+﻿using Application.RepositoryContracts;
+using Domain.EntityAggregates;
+
+namespace Application.ServicesContracts
 {
-    public interface IEntityService
+    public interface IEntityService : IGenericRepository<Entity> 
     {
     }
 }

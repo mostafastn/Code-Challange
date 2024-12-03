@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DocumentAggregates
+namespace Application.DocumentAggregates
 {
-    public class Document
+    public class DocumentViewModel
     {
         public int Id { get; set; }
         public required string FileName { get; set; }
@@ -15,7 +15,5 @@ namespace Domain.DocumentAggregates
         public int EntityId { get; set; } // ارجاع به موجودیت
         public int RowId { get; set; }    // ارجاع به ردیف موجودیت
         public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
-
-        public required Entity Entity { get; set; } // رابطه با موجودیت
     }
 }

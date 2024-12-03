@@ -1,4 +1,4 @@
-﻿using Domain.DbEntity;
+﻿using Domain.EntityAggregates;
 
 namespace Application.RepositoryContracts
 {
