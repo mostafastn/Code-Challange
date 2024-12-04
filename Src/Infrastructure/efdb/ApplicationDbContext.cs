@@ -21,7 +21,7 @@ namespace efdb
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=.;Database=MyAppDb;Trusted_Connection=True;",
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=SampleDb;Trusted_Connection=True;",
                     opts => opts.CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds));
             }
         }
