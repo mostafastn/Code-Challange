@@ -1,9 +1,6 @@
 ﻿using Application.DocumentAggregates;
-using Application.OrderAggregates;
 using Application.ServicesContracts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Services.Services;
 
 namespace API.Controllers
 {
@@ -23,7 +20,7 @@ namespace API.Controllers
         {
             try
             {
-                var createdOrder = await _documentService.Add(document);
+                var createdOrder = await _documentService.CreateAsync(document);
                 return Ok(createdOrder);
             }
             catch (Exception ex)

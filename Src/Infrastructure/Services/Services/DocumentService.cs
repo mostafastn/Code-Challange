@@ -1,9 +1,7 @@
 ﻿using Application.DocumentAggregates;
-using Application.ProductAggregates;
 using Application.RepositoryContracts;
 using Application.ServicesContracts;
 using AutoMapper;
-using Domain.EntityAggregates;
 using Domain.DocumentAggregates;
 
 namespace Services.Services

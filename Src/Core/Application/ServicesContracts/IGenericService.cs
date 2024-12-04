@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.ServicesContracts
+﻿namespace Application.ServicesContracts
 {
-    public interface IGenericService<TEntity, TViewModel> 
+    public interface IGenericService<TEntity, TViewModel>
         where TEntity : class
         where TViewModel : class
     {

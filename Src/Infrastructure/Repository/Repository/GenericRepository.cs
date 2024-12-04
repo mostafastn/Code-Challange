@@ -1,13 +1,6 @@
 ﻿using Application.RepositoryContracts;
 using efdb;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Repository
 {
@@ -33,7 +26,7 @@ namespace Repository
         {
             _tEntities.Remove(entity);
             if (!bypassSave)
-               await _uow.SaveChangesAsync();
+                await _uow.SaveChangesAsync();
         }
 
         public async Task<TEntity> Find(Func<TEntity, bool> predicate)
@@ -44,7 +37,7 @@ namespace Repository
         public async Task<TEntity> FindAsync(int id)
         {
             return await _tEntities.FindAsync(id);
-        }        
+        }
 
         public bool Any(Func<TEntity, bool> predicate)
         {

@@ -1,10 +1,9 @@
-﻿using Application.RepositoryContracts;
+﻿using Application.DocumentAggregates;
 using Domain.DocumentAggregates;
-using Domain.EntityAggregates;
 
 namespace Application.ServicesContracts
 {
-    public interface IDocumentService : IGenericRepository<Document>
+    public interface IDocumentService : IGenericService<Document, DocumentViewModel>
     {
     }
 }

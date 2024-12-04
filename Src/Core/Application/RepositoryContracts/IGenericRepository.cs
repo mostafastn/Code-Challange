@@ -1,15 +1,8 @@
-﻿using Domain.EntityAggregates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.RepositoryContracts
+﻿namespace Application.RepositoryContracts
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<T> Add(T entity ,bool bypassSave = false);
+        Task<T> Add(T entity, bool bypassSave = false);
         Task Delete(T entity, bool bypassSave = false);
         Task<T> Find(Func<T, bool> predicate);
         Task<T> FindAsync(int id);

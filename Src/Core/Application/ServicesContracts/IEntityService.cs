@@ -1,9 +1,10 @@
-﻿using Application.RepositoryContracts;
+﻿using Application.EntityAggregates;
+using Application.RepositoryContracts;
 using Domain.EntityAggregates;
 
 namespace Application.ServicesContracts
 {
-    public interface IEntityService : IGenericRepository<Entity> 
+    public interface IEntityService : IGenericService<Entity, EntityViewModel> 
     {
     }
 }

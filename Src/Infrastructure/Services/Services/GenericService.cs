@@ -1,12 +1,6 @@
 ﻿using Application.RepositoryContracts;
 using Application.ServicesContracts;
 using AutoMapper;
-using Domain.EntityAggregates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Services
 {
