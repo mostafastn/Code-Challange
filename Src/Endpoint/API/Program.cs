@@ -12,6 +12,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCustomDIContainer();
 builder.Services.AddCustomDatabase(builder.Configuration);
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

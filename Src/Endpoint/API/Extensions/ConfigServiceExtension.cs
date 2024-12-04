@@ -2,8 +2,7 @@
 using Application.ServicesContracts;
 using efdb;
 using Microsoft.EntityFrameworkCore;
-using Repository.Orders;
-using Repository.Products;
+using Repository.Document;
 using Services.Services;
 
 namespace API.Extensions
@@ -12,18 +11,15 @@ namespace API.Extensions
     {
         public static void AddCustomDIContainer(this IServiceCollection services)
         {
-
             services.AddScoped<IUnitOfWork, ApplicationDbContext>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IDiscountService, DiscountService>();
-            services.AddScoped<IProfitService, ProfitService>();
 
-            services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IDocumentRepository, DocumentRepository>();
+            services.AddScoped<IEntityRepository, EntityRepository>();
 
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IDocumentService, DocumentService>();
+            services.AddScoped<IEntityService, EntityService>();
         }
 
         public static void AddCustomDatabase(this IServiceCollection services, IConfiguration configuration)

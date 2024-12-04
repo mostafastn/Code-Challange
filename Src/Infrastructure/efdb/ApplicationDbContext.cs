@@ -1,8 +1,6 @@
-﻿using Domain.CustomerAggregates;
-using Domain.OrderAggregates;
-using Domain.ProductAggregates;
+﻿using Domain.DocumentAggregates;
+using Domain.EntityAggregates;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace efdb
 {
@@ -10,16 +8,14 @@ namespace efdb
     {
         public ApplicationDbContext()
         {
-                
+
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<Entity> Entities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -38,27 +34,11 @@ namespace efdb
 
         private void FluentBuilder(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Order>()
-            //    .HasMany(o => o.OrderItems)
-            //    .WithOne()
-            //    .HasForeignKey(oi => oi.OrderId);
-
-            //modelBuilder.Entity<OrderItem>()
-            //    .HasOne<Product>()
-            //    .WithMany()
-            //    .HasForeignKey(oi => oi.ProductId);
-
-            modelBuilder.Entity<Customer>()
+            modelBuilder.Entity<Entity>()
                 .HasData(
-                    new Customer { Id = 1, Name = "Customer 1", PhoneNumber = "9876543210", Email = "info1@test.com" },
-                    new Customer { Id = 2, Name = "Customer 2", PhoneNumber = "1234567890", Email = "info2@test.com" },
-                    new Customer { Id = 3, Name = "Customer 3", PhoneNumber = "4567891230", Email = "info3@test.com" });
-
-            modelBuilder.Entity<Product>()
-                .HasData(
-                    new Product { Id = 1, Name = "Product 1", Price = 10000, IsFragile = false },
-                    new Product { Id = 2, Name = "Product 2", Price = 20000, IsFragile = false },
-                    new Product { Id = 3, Name = "Product 3", Price = 30000, IsFragile = true });
+                    new Entity { Id = 1, TableName = "Table 1" },
+                    new Entity { Id = 2, TableName = "Table 2" },
+                    new Entity { Id = 3, TableName = "Table 3" });
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
